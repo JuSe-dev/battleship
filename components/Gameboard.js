@@ -103,6 +103,18 @@ export default function Gameboard() {
         }
     }
 
+    const itemColor = (number) => {
+        if (board[number].icon === CIRCLE) {
+            return 'lime';
+        }
+        else if (board[number].icon === CROSS) {
+            return '#3d3d3d';
+        }
+        else {
+            return 'green';
+        }
+    }
+
     const items = [];
     for (let a = 0; a < NBR_OF_ROWS; a++) {
         const cols = [];
@@ -117,7 +129,7 @@ export default function Gameboard() {
                         key={a * NBR_OF_COLS + b}
                         name={board[b * NBR_OF_COLS + a].icon}
                         size={35}
-                        color='green'
+                        color={itemColor(b * NBR_OF_COLS + a)}
                     />
                 </Pressable>
             );
